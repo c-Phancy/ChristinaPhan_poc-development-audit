@@ -1,4 +1,5 @@
 routes:
   - name: "Movies"
-    prefix: "movies"
+      # Empty prefix to support /movies or /movie
+    prefix: ""
     path: "./movies"

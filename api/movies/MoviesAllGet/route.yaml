@@ -1,2 +1,2 @@
 method: "get"
-route: "all"
+route: "/movies/all"

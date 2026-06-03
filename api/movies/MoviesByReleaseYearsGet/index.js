@@ -82,6 +82,7 @@ module.exports = makeInjectable(
         return res.status(200).json(
           results.map((movie) => ({
             ...movie,
+            characters: MovieModel.stripCharacterIds(movie),
             _id: { $oid: movie._id.toString() },
           })),
         );

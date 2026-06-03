@@ -1,2 +1,2 @@
 method: "get"
-route: "/id/{id}"
+route: "/movies/id/{id}"

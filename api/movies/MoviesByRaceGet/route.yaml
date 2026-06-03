@@ -1,2 +1,2 @@
 method: "get"
-route: "/by-race/{race}"
+route: "/movies/by-race/{race}"

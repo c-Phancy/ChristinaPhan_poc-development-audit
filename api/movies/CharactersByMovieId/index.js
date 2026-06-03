@@ -9,19 +9,19 @@ module.exports = makeInjectable(
     },
   },
   async function ({ MovieModel }, req, res) {
-    // Error check for params and params.id
-    if (!req.params || !req.params.id) {
+    // Error check for params and params.movieId
+    if (!req.params || !req.params.movieId) {
       return res.status(400).json({
         error: "Missing Params from Request",
       });
     }
 
-    // Error check for if id is a valid ObjectId
-    let _id = req.params.id;
+    // Error check for if movieId is a valid ObjectId
+    let _id = req.params.movieId;
 
     if (!Types.ObjectId.isValid(_id)) {
       return res.status(400).json({
-        error: "Invalid id - Must be an ObjectId",
+        error: "Invalid movieId - Must be an ObjectId",
       });
     }
 
@@ -36,10 +36,11 @@ module.exports = makeInjectable(
         }
 
         // Return status code 200 with movie
-        return res.status(200).json({
-          ...results.stripCharacterIdsFromDoc(),
-          _id: { $oid: _id.toString() },
-        });
+        return res.status(200).json(
+          results.characters.map((character) => ({
+            name: character.name,
+          })),
+        );
       })
       .catch((_) => {
         return res
