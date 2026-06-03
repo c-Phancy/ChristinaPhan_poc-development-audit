@@ -2,7 +2,7 @@ const makeInjectable = require("../../../helpers/makeInjectable");
 
 module.exports = makeInjectable({
   defaults: {
-    MovieModel: () => require("../models/movie")
+    MovieModel: /* istanbul ignore next */ () => require("../models/movie")
   }
 }, async function({MovieModel}, req, res) {
   try {
