@@ -41,9 +41,12 @@ test("MoviesAllGet returns list of Movies sorted by releaseYear from oldest to n
         "../api/movies/_test/documents/movies-get-document.json"
     );
 
+    // Force movies to be returned in reverse order to test sorting logic in the function
+    const unsortedMovies = [...movieDocuments].reverse();
+
     const MovieModel = require("../models/movie");
     mockingoose.resetAll();
-    mockingoose(MovieModel).toReturn(movieDocuments, "find");
+    mockingoose(MovieModel).toReturn(unsortedMovies, "find");
 
     let req = {
         header: {},
@@ -65,7 +68,8 @@ test("MoviesAllGet returns list of Movies sorted by releaseYear from oldest to n
 test("MoviesAllGet returns empty array when no movies found", async() => {
     const MovieModel = require("../models/movie");
     mockingoose.resetAll();
-    mockingoose(MovieModel).toReturn([], "find");
+    // Bypass Mockingoose's default behavior of returning an empty array for find() by explicitly returning null
+    mockingoose(MovieModel).toReturn(null, "find");
 
     let req = {
         header: {},
