@@ -1,0 +1,21 @@
+{
+  "_id": {
+    "$oid": "6a201a8839b4b536766defa2"
+  },
+  "name": "The Lord of the Rings: The War of the Rohirrim",
+  "releaseYear": 2024,
+  "characters": [
+    {
+      "_id": {
+        "$oid": "6a201a8839b4b536766defa3"
+      },
+      "name": "Helm"
+    },
+    {
+      "_id": {
+        "$oid": "6a201a8839b4b536766defa4"
+      },
+      "name": "Olwyn"
+    }
+  ]
+}

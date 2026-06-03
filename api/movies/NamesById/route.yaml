@@ -1,0 +1,2 @@
+method: "get"
+route: "/movies/movie-id/{movieId}/character-name/{characterName}"

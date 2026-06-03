@@ -31,10 +31,13 @@ module.exports = makeInjectable(
 
         // Filter characters in each movie to only include those of the specified race
         let filteredResults = results.map((movie) => {
-          let filteredCharacters = movie.characters.filter(
+          const cleanCharacters = MovieModel.stripCharacterIds(movie);
+
+          let filteredCharacters = cleanCharacters.filter(
             (character) =>
               character.race.toLowerCase() === req.params.race.toLowerCase(),
           );
+
           return {
             ...movie,
             _id: { $oid: movie._id.toString() },
